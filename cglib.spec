@@ -3,7 +3,7 @@ Summary:	Code Generation Library
 Summary(pl):	Biblioteka do generowania kodu
 Name:		cglib
 Version:	2.1.3
-Release:	1jpp
+Release:	2
 Epoch:		0
 License:	Apache Software License 2
 Group:		Development/Languages/Java
