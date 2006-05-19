@@ -16,7 +16,7 @@ URL:		http://cglib.sourceforge.net/
 BuildRequires:	asm >= 1.5.3
 BuildRequires:	asm2
 BuildRequires:	aspectwerkz >= 1.0
-BuildRequires:	jakarta-ant >= 1.6
+BuildRequires:	ant >= 1.6
 BuildRequires:	jarjar
 BuildRequires:	junit
 Requires:	asm >= 1.5.3
