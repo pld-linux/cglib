@@ -1,6 +1,6 @@
 %define uscver 2.1_3
 Summary:	Code Generation Library
-Summary(pl.UTF-8):   Biblioteka do generowania kodu
+Summary(pl.UTF-8):	Biblioteka do generowania kodu
 Name:		cglib
 Version:	2.1.3
 Release:	2
@@ -36,7 +36,7 @@ implementowania interfejsów w trakcie działania programu.
 
 %package javadoc
 Summary:	Javadoc for %{name}
-Summary(pl.UTF-8):   Dokumentacja javadoc dla pakietu %{name}
+Summary(pl.UTF-8):	Dokumentacja javadoc dla pakietu %{name}
 Group:		Documentation
 
 %description javadoc
