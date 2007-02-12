@@ -1,6 +1,6 @@
 %define uscver 2.1_3
 Summary:	Code Generation Library
-Summary(pl):	Biblioteka do generowania kodu
+Summary(pl.UTF-8):   Biblioteka do generowania kodu
 Name:		cglib
 Version:	2.1.3
 Release:	2
@@ -29,20 +29,20 @@ cglib is a powerful, high performance and quality Code Generation
 Library. It is used to extend Java classes and implement interfaces
 at runtime.
 
-%description -l pl
-cglib to potÍøna, o wysokiej wydajno∂ci i jako∂ci biblioteka
-generowania kodu. Jest uøywana do rozszerzania klas Javy i
-implementowania interfejsÛw w trakcie dzia≥ania programu.
+%description -l pl.UTF-8
+cglib to potƒô≈ºna, o wysokiej wydajno≈õci i jako≈õci biblioteka
+generowania kodu. Jest u≈ºywana do rozszerzania klas Javy i
+implementowania interfejs√≥w w trakcie dzia≈Çania programu.
 
 %package javadoc
 Summary:	Javadoc for %{name}
-Summary(pl):	Dokumentacja javadoc dla pakietu %{name}
+Summary(pl.UTF-8):   Dokumentacja javadoc dla pakietu %{name}
 Group:		Documentation
 
 %description javadoc
 Javadoc for %{name}.
 
-%description javadoc -l pl
+%description javadoc -l pl.UTF-8
 Dokumentacja javadoc dla pakietu %{name}.
 
 %prep
