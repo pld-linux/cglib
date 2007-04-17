@@ -1,3 +1,4 @@
+%include	/usr/lib/rpm/macros.java
 %define uscver 2.1_3
 Summary:	Code Generation Library
 Summary(pl.UTF-8):	Biblioteka do generowania kodu
@@ -10,15 +11,18 @@ Group:		Development/Languages/Java
 Source0:	http://dl.sourceforge.net/cglib/%{name}-src-%{uscver}.jar
 # Source0-md5:	17747df2f9e6ad660962c629282c0fca
 Source1:	%{name}-missing-words.txt
-Patch0:		%{name}-2.1.3-build_xml.patch
+Patch0:		%{name}-build_xml.patch
 Patch1:		%{name}-ExamplePreProcessor.patch
 URL:		http://cglib.sourceforge.net/
+BuildRequires:	ant >= 1.6
 BuildRequires:	asm >= 1.5.3
 BuildRequires:	asm2
-BuildRequires:	aspectwerkz >= 1.0
-BuildRequires:	ant >= 1.6
-BuildRequires:	jarjar
+#BuildRequires:	aspectwerkz >= 1.0
+#BuildRequires:	jarjar
+BuildRequires:	jpackage-utils
 BuildRequires:	junit
+BuildRequires:	rpm-javaprov
+BuildRequires:	rpmbuild(macros) >= 1.300
 Requires:	asm >= 1.5.3
 Requires:	aspectwerkz >= 1.0
 BuildArch:	noarch
@@ -26,8 +30,8 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 cglib is a powerful, high performance and quality Code Generation
-Library. It is used to extend Java classes and implement interfaces
-at runtime.
+Library. It is used to extend Java classes and implement interfaces at
+runtime.
 
 %description -l pl.UTF-8
 cglib to potężna, o wysokiej wydajności i jakości biblioteka
@@ -38,6 +42,7 @@ implementowania interfejsów w trakcie działania programu.
 Summary:	Javadoc for %{name}
 Summary(pl.UTF-8):	Dokumentacja javadoc dla pakietu %{name}
 Group:		Documentation
+Requires:	jpackage-utils
 
 %description javadoc
 Javadoc for %{name}.
@@ -46,10 +51,9 @@ Javadoc for %{name}.
 Dokumentacja javadoc dla pakietu %{name}.
 
 %prep
-%setup -q -T -c -n %{name}
-unzip -q %{SOURCE0}
-# remove all binary libs
-for f in $(find . -name "*.jar"); do mv $f $f.no; done
+%setup -qc
+find -name '*.jar' | xargs rm -vf
+
 ( cat << EO_JP
 grant codeBase "file:/-"{
   permission java.security.AllPermission;
@@ -63,17 +67,12 @@ cp %{SOURCE1} src/test/net/sf/cglib/util/words.txt
 %patch1
 
 %build
-build-jar-repository -s -p lib \
-ant \
-asm/asm-attrs \
-asm/asm \
-asm2/asm2 \
-asm/asm-util \
-aspectwerkz-core \
-jarjar \
-junit \
+build-jar-repository -s -p lib ant asm-attrs asm asm2 asm-util junit
 
-ant test javadoc jar
+#aspectwerkz-core \
+#jarjar \
+
+%ant test javadoc jar
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -116,4 +115,5 @@ fi
 
 %files javadoc
 %defattr(644,root,root,755)
-%{_javadocdir}/*
+%{_javadocdir}/%{name}-%{version}
+%ghost %{_javadocdir}/%{name}
