@@ -1,0 +1,44 @@
+--- build.xml.sav	2005-10-13 11:31:30.000000000 +0200
++++ build.xml	2005-11-12 14:15:58.000000000 +0100
+@@ -41,6 +41,7 @@
+       <pathelement location="${build.home}/classes"/>
+       <fileset dir="./lib">
+ 		<include name="*.jar"/>
++		<exclude name="asm2*.jar"/>
+        </fileset>
+     </path>
+ 
+@@ -123,14 +124,18 @@
+       <exclude name="samples/**" />
+     </jar> 
+ 
+-    <taskdef name="jarjar" classname="com.tonicsystems.jarjar.JarJarTask" classpathref="compile.classpath"/>
+-    <jarjar basedir="${build.home}/classes" jarfile="${dist.home}/${component.name}-nodep-${component.version}.jar" >
+-      <zipfileset dir="lib" includes="asm*.txt"/>
+-      <zipfileset src="lib/asm.jar" excludes="META-INF"/>
+-      <zipfileset src="lib/asm-attrs.jar" excludes="META-INF"/>
++    <taskdef name="jarjar" classname="com.tonicsystems.jarjar.JarJarTask" classpath="lib/jarjar.jar:lib/asm2_asm2.jar"/>
++    <echo message="${dist.home}/${component.name}-nodep-${component.version}.jar" />
++    <echo message="${build.home}/classes"/>
++    <jarjar destfile="${dist.home}/${component.name}-nodep-${component.version}.jar" >
++      <fileset dir="lib" includes="asm*.txt"/>
++      <zipfileset src="lib/asm_asm.jar" excludes="META-INF"/>
++      <zipfileset src="lib/asm_asm-attrs.jar" excludes="META-INF"/>
+       <rule pattern="org.objectweb.asm.**" result="net.sf.cglib.asm.@1"/>
+-      <include name="**/*"/>
+-      <exclude name="samples/**"/>
++      <fileset dir="${build.home}/classes">
++        <include name="**/*"/>
++        <exclude name="samples/**"/>
++      </fileset>
+     </jarjar> 
+   </target>
+ 
+@@ -259,6 +264,7 @@
+           <pathelement path="${samples.build.home}/classes" />      
+           <fileset dir="./lib">
+ 		<include name="*.jar"/>
++		<exclude name="asm2*.jar"/>
+           </fileset>
+         </classpath>
+     </java>

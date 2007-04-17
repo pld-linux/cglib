@@ -1,0 +1,10 @@
+--- src/test/net/sf/cglib/transform/hook/ExamplePreProcessor.java.sav	2005-11-12 12:53:28.000000000 +0100
++++ src/test/net/sf/cglib/transform/hook/ExamplePreProcessor.java	2005-11-12 12:56:04.000000000 +0100
+@@ -39,4 +39,7 @@
+             }
+         };
+     }
++
++    public void initialize() {
++    }
+ }
