@@ -1,4 +1,3 @@
-%include	/usr/lib/rpm/macros.java
 %define uscver 2.1_3
 Summary:	Code Generation Library
 Summary(pl.UTF-8):	Biblioteka do generowania kodu
