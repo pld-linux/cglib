@@ -62,8 +62,8 @@ EO_JP
 # add missing test input file
 cp %{SOURCE1} src/test/net/sf/cglib/util/words.txt
 
-%patch0
-%patch1
+%patch -P0
+%patch -P1
 
 %build
 build-jar-repository -s -p lib ant asm-attrs asm asm2 asm-util junit
